@@ -1,0 +1,41 @@
+.example1 {
+    img {
+        height: 50px;
+    }
+    .tt {
+        background: orangered;
+        color: white;
+        box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.25);
+        padding: 0px 5px;
+    }
+}
+
+.example2 {
+    margin-top: 20px;
+
+    @border-weight: 10px;
+    @border-radius: @border-weight;
+
+    .wrap {
+        background: mintcream;
+        background-clip: content-box;
+
+        border: @border-weight solid rgba(100, 100, 100, 0.5);
+        border-radius: @border-radius;
+    }
+
+    .thumb {
+        height: 100px;
+        display: block;
+    }
+
+    .title {
+        line-height: 1.5em;
+        padding: 0 5px;
+    }
+}
+
+body {
+    margin-top: 200px;
+    text-align: center;
+}

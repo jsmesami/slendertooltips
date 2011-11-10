@@ -1,0 +1,6 @@
+.tt {
+  position: absolute;
+  z-index: 999;
+  left: -9999px;
+  top: 0;
+}

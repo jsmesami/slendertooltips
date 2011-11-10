@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Slender Tooltips Demo</title>
+
+    <link href="css/tooltips.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="example1">
+        <a href="#" title="floral"><img src="img/01.jpg" /></a>
+        <a href="#" title="fluffy"><img src="img/02.jpg" /></a>
+        <a href="#" ><img src="img/03.jpg" /></a>
+        <a href="#" title="beef"><img src="img/04.jpg" /></a>
+    </div>
+
+    <div class="example2">
+        <a href="img/01.jpg" title="floral">eeny</a>
+        <a href="img/02.jpg" title="fluffy">meeny</a>
+        <a href="img/03.jpg" title="">miny</a>
+        <a href="broken-link" title="No hat for Moe?">moe</a>
+    </div>
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+<script src="js/jquery.tooltips.min.js"></script>
+<script>
+    $(function() {
+        $('.example1 a').tooltips({
+            offsetX: 0,
+            offsetY: 5,
+            makeMarkup: function() {
+                var title = this.attr('title');
+                return title && title.length ? 'hat type: ' + title : 'unknown hat type!';
+            }
+        });
+
+        $('.example2 a').tooltips();
+    });
+</script>
+
+</html>
