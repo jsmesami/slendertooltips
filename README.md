@@ -1,7 +1,7 @@
 Slender Tooltips
 ================
 
-Very lightweight, yet flexible JQuery plugin to display CSS-styleable sticky hover tooltips.
+Very lightweight, yet flexible jQuery plugin to display CSS-styleable sticky hover tooltips.
 This one will __display thumbnail__ if the target link is a picture!
 
 Why?
@@ -30,7 +30,7 @@ Obviously, you have to add JQuery as well.
 
 Include the basic CSS:
 
-    <link href="tooltips.css" rel="stylesheet" type="text/css">
+	<link href="tooltips.css" rel="stylesheet" type="text/css">
 
 Usage
 -----
@@ -40,9 +40,9 @@ Usage
 ...and bind your tooltips to them:
 
 	<script>
-    $(function() {
-        $('a.tooltips').tooltips();
-    });
+	$(function() {
+		$('a.tooltips').tooltips();
+	});
 	</script>
 
 Selected elements must have `title` attribute, which contains text to be displayed inside 
@@ -72,19 +72,19 @@ can take advantage of this when styling it.
 You can override the distance of the tooltip from the cursor, but best of all, you can also
 entirely redefine the markup generated inside the container `div` (the one with `class="tt"`).
 To do that, specify a factory function which constructs a custom markup based on context
-- as you can see in following example, `this` refers to the element being 'tooltipped'.
+- as you can see in following example, `obj` refers to the jQuery object being 'tooltipped'.
 
 	<script>
-    $(function() {
-        $('a.tooltips').tooltips({
-            offsetX: 5,
-            offsetY: 10,
-            makeMarkup: function() {
-                var title = this.attr('title');
-                return title && title.length ? 'title: ' + title : '';
-            }
-        });
-    });
+	$(function() {
+		$('a.tooltips').tooltips({
+			offsetX: 5,
+			offsetY: 10,
+			makeMarkup: function(obj) {
+				var title = obj.attr('title');
+				return title && title.length ? 'title: ' + title : '';
+			}
+		});
+	});
 	</script>
 
 Resulting markup:

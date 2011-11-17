@@ -2,12 +2,9 @@ $.fn.tooltips = function(options) {
     var opts = $.extend({}, $.fn.tooltips.defaults, options);
 
     return this.each(function() {
-        var markup = opts.makeMarkup.call($(this)),
-            tt = $('<div class="tt" />').append(markup);
+        var tt = $('<div class="tt">').append(opts.makeMarkup($(this)));
 
-        $(this).parent().append(tt);
-
-        $(this).removeAttr("title")
+        $(this)
             .mousemove(function(event) {
                 var border_top = $(window).scrollTop(),
                     border_right = $(window).width(),
@@ -35,27 +32,28 @@ $.fn.tooltips = function(options) {
             })
             .mouseout(function() {
                 tt.css('left', '-9999px');
-            });
+            })
+            .removeAttr('title').parent().append(tt);
     });
 }
 
 $.fn.tooltips.defaults = {
-    'offsetX': 10,
-    'offsetY': 10,
+    offsetX: 10,
+    offsetY: 10,
 
-    'makeMarkup': function() {
+    makeMarkup: function(obj) {
 
-        var markup = $('<div class="wrap" />'),
-            title = this.attr('title');
+        var markup = $('<div class="wrap">'),
+            title = obj.attr('title');
 
-        $('<img />', {
+        $('<img>', {
             'class': 'thumb',
-            'src': this.attr('href'),
-            'load': function() { markup.prepend(this); }
+            src: obj.attr('href'),
+            load: function() { markup.prepend(this); }
         });
 
         if (title && title.length) {
-            $('<div class="title" />').text(title).prependTo(markup);
+            $('<div class="title">').text(title).prependTo(markup);
         }
 
         return markup;
